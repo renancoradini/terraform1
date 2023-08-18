@@ -8,7 +8,7 @@ variable "accessKey" {
 variable "secretKey" {
   type = string
   description = "Secret key statica"
-  default   = "m0ZSNm7LmfVykPXKavL/RZptoxB4EdViIIc4g1QI"
+  default   = "m0ZSNm7LmfVykPXKavL/RZptoxB4EdViIssIc4g1QI"
 }
 #
 #
