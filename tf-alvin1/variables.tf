@@ -31,6 +31,6 @@ default = "172.168.2.0/24"
 }
 
 variable "prisub3cidr" {
-cdefault ="172.168.3.0/24"
+default ="172.168.3.0/24"
 }
 
