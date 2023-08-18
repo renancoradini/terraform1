@@ -7,17 +7,17 @@
      }
  }
 #Associating the Public RT with the Public Subnets
-resource "aws_route_table_association" "PubRTAss" {
+resource "aws_route_table_association" "PubRTAss1" {
 subnet_id = aws_subnet.subnet1.id
 route_table_id = aws_route_table.publRT.id
 }
 
-resource "aws_route_table_association" "PubRTAss" {
+resource "aws_route_table_association" "PubRTAss2" {
 subnet_id = aws_subnet.subnet2.id
 route_table_id = aws_route_table.publRT.id
 }
 
-resource "aws_route_table_association" "PubRTAss" {
+resource "aws_route_table_association" "PubRTAss3" {
 subnet_id = aws_subnet.subnet3.id
 route_table_id = aws_route_table.publRT.id
 }
