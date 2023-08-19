@@ -2,7 +2,7 @@
 variable "domain_name" {
   type        = string
   description = "The domain name for the website."
-  default     = "cmcloudlab1035.info"
+  default     = "meusiterenanzin.com"
 }
 
 variable "r53_zone_id" {
@@ -23,4 +23,17 @@ variable "container_image" {
   type        = string
   description = "Define what docker image will be deployed to the ECS task"
   default     = "nginx"
+}
+
+
+variable "accessKey" {
+  type = string
+  description = "acess key statica"
+  default   = "AKIAVXXMOHS3FRM3GRGR"
+}
+
+variable "secretKey" {
+  type = string
+  description = "Secret key statica"
+  default   = "m0ZSNm7LmfVykPXKavL/RZptoxB4EdViIssIc4g1QI"
 }

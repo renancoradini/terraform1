@@ -15,5 +15,3 @@ terraform {
 #   shared_credentials_file = "/home/User_Name/.aws/credentials"
 #   profile               = "profile1"
 # }
-
-note

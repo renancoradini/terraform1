@@ -1,4 +1,4 @@
-
+######
 terraform {
   required_providers {
     aws = {
@@ -10,21 +10,21 @@ terraform {
 }
 
 locals {
-  name     = "folderit"
-  rds_name = "folderit_rds"
+  name     = "denzelrr"
+  rds_name = "denzelrr_rds"
   region   = "us-east-1"
 }
-
 provider "aws" {
-  region  = "us-east-1"
-  profile = "blog" #Defines the credentials of aws cli to use: aws configure --profile <name>
+  region     = "us-west-2"
+  access_key = var.accessKey
+  secret_key = var.secretKey
 }
 
-provider "aws" {
-  alias   = "acm_provider"
-  region  = "us-east-1"
-  profile = "blog" #Defines the credentials of aws cli to use: aws configure --profile <name>
-}
+# provider "aws" {
+#   alias   = "acm_provider"
+#   region  = "us-east-1"
+#   profile = "blog" #Defines the credentials of aws cli to use: aws configure --profile <name>
+# }
 
 
 # VPC Config
@@ -33,24 +33,32 @@ module "vpc" {
   version = "~> 2"
 
   name = local.name
-  cidr = "10.99.0.0/18"
+  cidr = "172.31.0.0/16"
 
   azs              = ["${local.region}a", "${local.region}b", "${local.region}c"]
-  public_subnets   = ["10.99.0.0/24", "10.99.1.0/24", "10.99.2.0/24"]
-  private_subnets  = ["10.99.3.0/24", "10.99.4.0/24", "10.99.5.0/24"]
-  database_subnets = ["10.99.7.0/24", "10.99.8.0/24", "10.99.9.0/24"]
+  public_subnets   = ["172.31.0.0/16", "172.31.16.0/16", "172.31.32.0/16"]
 
   create_database_subnet_group = true
   enable_dns_hostnames         = true
 
-  enable_nat_gateway  = true
-  single_nat_gateway  = true
-  reuse_nat_ips       = true
-  external_nat_ip_ids = aws_eip.eip_nat.*.id
+  enable_nat_gateway  = false
+# single_nat_gateway  = false
+#  reuse_nat_ips       = true
+# external_nat_ip_ids = aws_eip.eip_nat.*.id
 
 }
 
 #Elastic IP for NAT Gateway
-resource "aws_eip" "eip_nat" {
-  vpc = true
-}
+# resource "aws_eip" "eip_nat" {
+#   vpc = true
+# }
+
+
+# resource "aws_internet_gateway" "IGW" {
+# vpc_id =  module.vpc.id
+# }
+
+# # Create EIP for the IGW
+# resource "aws_eip" "myEIP" {
+#    vpc   = true
+#  }

@@ -2,7 +2,7 @@
 ##### ALB - Load Balancer #####
 resource "aws_lb" "loadbalancer" {
   internal           = "false" # internal = true else false
-  name               = "folderit-alb"
+  name               = "denzelrr-alb"
   load_balancer_type = "application"
   subnets            = module.vpc.public_subnets # Subnets públicas
   security_groups    = [aws_security_group.public.id]
