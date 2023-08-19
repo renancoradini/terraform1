@@ -20,12 +20,12 @@ provider "aws" {
   secret_key = var.secretKey
 }
 
-#  provider "aws" {
-#    alias   = "acm_provider"
-#    region  = "us-east-1"
-#   access_key = var.accessKey
-#   secret_key = var.secretKey
-#  }
+  provider "aws" {
+   alias   = "acm_provider"
+   region  = "us-east-1"
+  access_key = var.accessKey
+  secret_key = var.secretKey
+ }
 
 
 # VPC Config
