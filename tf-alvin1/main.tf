@@ -6,8 +6,6 @@ terraform {
     }
   }
 
-
-
   required_version = ">= 0.14.9"
 
 }
@@ -18,8 +16,4 @@ terraform {
 #   profile               = "profile1"
 # }
 
-provider "aws" {
-  region                = var.aws_region
-  access_key = var.accessKey
-  secret_key = var.secretKey
-}
+note

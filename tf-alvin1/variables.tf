@@ -19,7 +19,7 @@ variable "aws_region" {
 
 variable "vpc-cidr" {
 type = string
-default = "172.168.0.0/16"
+default = "172.16.0.0/16"
 }
 
 variable "prisub1cidr" {
