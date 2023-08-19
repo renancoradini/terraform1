@@ -12,7 +12,7 @@ terraform {
 locals {
   name     = "denzelrr"
   rds_name = "denzelrr_rds"
-  region   = "us-east-1"
+  region   = "us-west-2"
 }
 provider "aws" {
   region     = "us-west-2"

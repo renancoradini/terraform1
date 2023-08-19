@@ -12,6 +12,7 @@ resource "aws_lb" "loadbalancer" {
 
 
 resource "aws_alb_target_group" "alb_public_webservice_target_group" {
+  load_balancer_arn = aws_lb.loadbalancer.arn
   name     = "public-webservice-tg"
   port     = "80"
   protocol = "HTTP"
