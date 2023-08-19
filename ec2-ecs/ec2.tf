@@ -1,6 +1,6 @@
 ##### AWS EC2 ##### 
 resource "aws_instance" "ec2_instance" {
-  ami                    = "ami-0e72545e0a1a5c759"
+  ami                    = "ami-04e35eeae7a7c5883"
   subnet_id              = module.vpc.public_subnets[0]
   instance_type          = var.instance_type
   #iam_instance_profile   = aws_iam_instance_profile.ecs_agent.name
