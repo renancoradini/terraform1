@@ -9,7 +9,7 @@
           "options": {
             "awslogs-group": "denzelrr-webservice",
             "awslogs-create-group": "true",
-            "awslogs-region": "us-east-1",
+            "awslogs-region": "us-west-2",
             "awslogs-stream-prefix": "ecs"
           }
         },

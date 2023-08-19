@@ -12,8 +12,7 @@ resource "aws_lb" "loadbalancer" {
 
 
 resource "aws_alb_target_group" "alb_public_webservice_target_group" {
-  load_balancer_arn = aws_lb.loadbalancer.arn
-  name     = "public-webservice-tg"
+   name     = "public-webservice-tg"
   port     = "80"
   protocol = "HTTP"
   vpc_id   = module.vpc.vpc_id
@@ -49,7 +48,7 @@ resource "aws_lb_listener" "lb_listener-webservice-https" {
   #protocol          = "HTTPS"
   port              = "80"
   protocol          = "HTTP"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  #ssl_policy        = "ELBSecurityPolicy-2016-08"
   #certificate_arn   = aws_acm_certificate.ssl_certificate.arn
 
   default_action {
