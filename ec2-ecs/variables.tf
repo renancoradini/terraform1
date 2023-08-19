@@ -29,11 +29,11 @@ variable "container_image" {
 variable "accessKey" {
   type = string
   description = "acess key statica"
-  default   = "AKIAZL47VXKAZWFGQE6F"
+  default   = "AKIAYZASAQQA34DC3BWQ"
 }
 
 variable "secretKey" {
   type = string
   description = "Secret key statica"
-  default   = "3sYk5cuJr69LuMDLVaMKc4wx1FBunp3YGWAMi9Bo"
+  default   = "DFKh09AUi9EiX7UOUnPslKAH7o7+vnJO/iqkdUzG"
 }
