@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0"
+      version = ">= 4.0"
     }
 
   }
@@ -20,11 +20,12 @@ provider "aws" {
   secret_key = var.secretKey
 }
 
-# provider "aws" {
-#   alias   = "acm_provider"
-#   region  = "us-east-1"
-#   profile = "blog" #Defines the credentials of aws cli to use: aws configure --profile <name>
-# }
+ provider "aws" {
+   alias   = "acm_provider"
+   region  = "us-east-1"
+  access_key = var.accessKey
+  secret_key = var.secretKey
+ }
 
 
 # VPC Config
@@ -36,7 +37,7 @@ module "vpc" {
   cidr = "172.31.0.0/16"
 
   azs              = ["${local.region}a", "${local.region}b", "${local.region}c"]
-  public_subnets   = ["172.31.0.0/16", "172.31.16.0/16", "172.31.32.0/16"]
+  public_subnets   = ["172.31.0.0/20", "172.31.16.0/20", "172.31.32.0/20"]
 
   create_database_subnet_group = true
   enable_dns_hostnames         = true
