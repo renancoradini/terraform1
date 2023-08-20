@@ -22,7 +22,7 @@ resource "aws_launch_template" "tf_launch_template" {
   image_id               = var.image_id                 #in variable file
   instance_type          = var.instance_type            #in variable file
   key_name               = var.key_name                 #in variable file
-  user_data              = data.template_file.user_data.rendered
+  user_data = base64encode(file("user_data.sh"))
   vpc_security_group_ids    = [aws_security_group.public.id]
 
     iam_instance_profile {
