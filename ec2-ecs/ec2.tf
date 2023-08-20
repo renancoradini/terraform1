@@ -1,42 +1,32 @@
-##### AWS EC2 ##### 
-# resource "aws_instance" "ec2_instance" {
-#   ami                    = "ami-04e35eeae7a7c5883"
-#   subnet_id              = module.vpc.public_subnets[0]
-#   instance_type          = var.instance_type
-#   iam_instance_profile   = aws_iam_instance_profile.ecs_agent.name
-#   vpc_security_group_ids = [aws_security_group.ec2_ecs_instance.id]
-#   ebs_optimized          = "false"
-#   source_dest_check      = "false"
-#   user_data              = data.template_file.user_data.rendered
-#   root_block_device {
-#     volume_type           = "gp3"
-#     volume_size           = "8"
-#     delete_on_termination = "true"
-#   }
-# }
 data "template_file" "user_data" {
   template = file("user_data.tpl") #Defines a script that runs when the EC2 instance starts
 }
 
+resource "aws_autoscaling_group" "tf" {
+  desired_capacity    = 1   #set to what you like; must be same number as min
+  max_size            = 1   #set to what you like
+  min_size            = 1   #set to what you like; must be same as desired capacity
+  vpc_zone_identifier = [module.vpc.public_subnets[0], module.vpc.public_subnets[1],module.vpc.public_subnets[2]]   #two subnets
 
-resource "aws_launch_configuration" "denzelrr" {
-  name_prefix     = "denzel-bolado-template"
-  image_id        = "ami-04e35eeae7a7c5883"
-  instance_type   = var.instance_type
-  subnet_id              = module.vpc.public_subnets[0]
-  vpc_security_group_ids = [aws_security_group.ec2_ecs_instance.id]
-  user_data       = data.template_file.user_data.rendered
-  iam_instance_profile  = aws_iam_instance_profile.ecs_agent.name
-
-  lifecycle {
-    create_before_destroy = true
+  launch_template {
+    id      = aws_launch_template.tf_launch_template.id
+    version = "$Latest"
   }
 }
 
-resource "aws_autoscaling_group" "denzelrr" {
-  min_size             = 1
-  max_size             = 1
-  desired_capacity     = 1
-  launch_configuration = aws_launch_configuration.denzelrr.name
-  vpc_zone_identifier  = module.vpc.public_subnets
+resource "aws_launch_template" "tf_launch_template" {
+  name_prefix            = "tf-launch_template"
+  image_id               = var.image_id                 #in variable file
+  instance_type          = var.instance_type            #in variable file
+  key_name               = var.key_name                 #in variable file
+  user_data              = data.template_file.user_data.rendered
+  vpc_security_group_ids = [aws_security_group.ec2_security_group.id]
+
+  tag_specifications {
+    resource_type = "instance"
+
+    tags = {
+      Name = "terraform_auto_scaling"
+    }
+  }
 }

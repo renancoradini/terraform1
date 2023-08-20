@@ -63,3 +63,13 @@ default = "172.31.16.0/20"
 variable "pubsub3cidr" {
 default ="172.31.32.0/20"
 }
+
+variable "image_id" {
+default ="ami-04e35eeae7a7c5883"
+}
+
+variable "key_name" {
+  type    = string
+  default = "denzelkeyname"
+}
+

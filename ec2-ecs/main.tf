@@ -1,34 +1,3 @@
-######
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">= 4.0"
-    }
-
-  }
-}
-
-locals {
-  name     = "denzelrr"
-  rds_name = "denzelrr_rds"
-  region   = var.regionset
-}
-provider "aws" {
-  region     = var.regionset
-  profile = "renandeploy"
-#access_key = var.accessKey
-# secret_key = var.secretKey
-}
-
-#   provider "aws" {
-#    alias   = "acm_provider"
-#    region  = "us-east-1"
-#   access_key = var.accessKey
-#   secret_key = var.secretKey
-#  }
-
-
 # VPC Config
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -42,7 +11,6 @@ module "vpc" {
 
   create_database_subnet_group = true
   enable_dns_hostnames         = true
-
   enable_nat_gateway  = false
 # single_nat_gateway  = false
 #  reuse_nat_ips       = true
