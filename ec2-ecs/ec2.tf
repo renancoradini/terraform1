@@ -9,24 +9,40 @@ resource "aws_autoscaling_group" "tf" {
   vpc_zone_identifier = [module.vpc.public_subnets[0], module.vpc.public_subnets[1],module.vpc.public_subnets[2]]   #two subnets
 
   launch_template {
-    id      = aws_launch_template.tf_launch_template.id
+    id      = aws_launch_template.tf_launch_template3.id
     version = "$Latest"
   }
+
+ health_check_type    = "ELB"
+  load_balancers = [aws_lb.loadbalancer.id]
+  target_group_arns = [aws_alb_target_group.alb_public_webservice_target_group.arn]
+
+    lifecycle {
+    create_before_destroy = true
+  }
+
+
 }
 
 ## In the future change the security group of instance to talk
 #  only with LB
 
-resource "aws_launch_template" "tf_launch_template" {
+resource "aws_launch_template" "tf_launch_template3" {
   name_prefix            = "tf-launch_template"
   image_id               = var.image_id                 #in variable file
   instance_type          = var.instance_type            #in variable file
-  key_name               = var.key_name                 #in variable file
+  
   user_data = base64encode(file("user_data.sh"))
-  vpc_security_group_ids    = [aws_security_group.public.id]
+  #vpc_security_group_ids    = [aws_security_group.public.id]
 
     iam_instance_profile {
     name = aws_iam_instance_profile.ecs_agent.name
+  }
+
+  network_interfaces {
+    associate_public_ip_address = true
+    delete_on_termination       = true
+    security_groups = [aws_security_group.public.id]
   }
 
   tag_specifications {

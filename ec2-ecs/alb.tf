@@ -26,6 +26,21 @@ resource "aws_alb_target_group" "alb_public_webservice_target_group" {
     timeout             = "10"
   }
 }
+
+resource "aws_lb_listener" "lb_listener-webservice-https" {
+  load_balancer_arn = aws_lb.loadbalancer.arn
+  port              = "80"
+  protocol          = "HTTP"
+#  ssl_policy        = "ELBSecurityPolicy-2016-08"
+# certificate_arn   = aws_acm_certificate.ssl_certificate.arn
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.alb_public_webservice_target_group.id
+  }
+}
+
+
 ##### ALB - Listeners #####
 
 # resource "aws_lb_listener" "lb_listener-webservice-https-redirect" {
@@ -42,16 +57,4 @@ resource "aws_alb_target_group" "alb_public_webservice_target_group" {
 #   }
 # }
 
-resource "aws_lb_listener" "lb_listener-webservice-https" {
-  load_balancer_arn = aws_lb.loadbalancer.arn
-  port              = "80"
-  protocol          = "HTTP"
-#  ssl_policy        = "ELBSecurityPolicy-2016-08"
-# certificate_arn   = aws_acm_certificate.ssl_certificate.arn
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_alb_target_group.alb_public_webservice_target_group.id
-  }
-}
 
