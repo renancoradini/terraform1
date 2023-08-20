@@ -12,10 +12,10 @@ terraform {
 locals {
   name     = "denzelrr"
   rds_name = "denzelrr_rds"
-  region   = "us-west-2"
+  region   = var.regionset
 }
 provider "aws" {
-  region     = "us-west-2"
+  region     = var.regionset
   access_key = var.accessKey
   secret_key = var.secretKey
 }
@@ -34,10 +34,10 @@ module "vpc" {
   version = "~> 2"
 
   name = local.name
-  cidr = "172.31.0.0/16"
+  cidr = var.vpc-cidr
 
   azs              = ["${local.region}a", "${local.region}b", "${local.region}c"]
-  public_subnets   = ["172.31.0.0/20", "172.31.16.0/20", "172.31.32.0/20"]
+  public_subnets   = [var.pubsub1cidr, pubsub2cidr, pubsub3cidr]
 
   create_database_subnet_group = true
   enable_dns_hostnames         = true

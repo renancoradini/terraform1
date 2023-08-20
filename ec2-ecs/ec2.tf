@@ -9,8 +9,8 @@ resource "aws_instance" "ec2_instance" {
   source_dest_check      = "false"
   user_data              = data.template_file.user_data.rendered
   root_block_device {
-    volume_type           = "gp2"
-    volume_size           = "30"
+    volume_type           = "gp3"
+    volume_size           = "8"
     delete_on_termination = "true"
   }
 }

@@ -45,7 +45,7 @@ resource "aws_security_group_rule" "allow_internal_VPC_traffic" {
   from_port         = 0
   to_port           = 0
   protocol          = "-1"
-  cidr_blocks       = ["10.99.0.0/18"]
+  cidr_blocks       = ["172.31.0.0/16"]
   security_group_id = aws_security_group.ec2_ecs_instance.id
 }
 

@@ -1,4 +1,11 @@
 ### General Variables ###
+
+variable "regionset" {
+  type        = string
+  description = "The Region name "
+  default     = "us-west-2"
+}
+
 variable "domain_name" {
   type        = string
   description = "The domain name for the website."
@@ -15,7 +22,7 @@ variable "r53_zone_id" {
 variable "instance_type" {
   type        = string
   description = "Define the EC2 Instance type for the ecs cluster"
-  default     = "t3.micro"
+  default     = "t2.micro"
 }
 
 ### ECS ###
@@ -25,6 +32,7 @@ variable "container_image" {
   default     = "nginx"
 }
 
+#Temporary credentials / lack of permission on acg Lab 
 
 variable "accessKey" {
   type = string
@@ -36,4 +44,22 @@ variable "secretKey" {
   type = string
   description = "Secret key statica"
   default   = "cBeCnbDsbGfetp+xj58w6FECh9+kEwejCiMs071V"
+}
+
+
+variable "vpc-cidr" {
+type = string
+default = "172.31.0.0/16"
+}
+
+variable "pubsub1cidr" {
+default = "172.31.0.0/20"
+}
+
+variable "pubsub2cidr" {
+default = "172.31.16.0/20"
+}
+
+variable "pubsub3cidr" {
+default ="172.31.32.0/20"
 }
