@@ -9,7 +9,7 @@ variable "regionset" {
 variable "domain_name" {
   type        = string
   description = "The domain name for the website."
-  default     = "meusiterenanzin.com"
+  default     = "renanzinsite.com"
 }
 
 variable "r53_zone_id" {
