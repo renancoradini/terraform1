@@ -16,8 +16,9 @@ locals {
 }
 provider "aws" {
   region     = var.regionset
-  access_key = var.accessKey
-  secret_key = var.secretKey
+  profile = "renandeploy"
+#access_key = var.accessKey
+# secret_key = var.secretKey
 }
 
 #   provider "aws" {
@@ -37,7 +38,7 @@ module "vpc" {
   cidr = var.vpc-cidr
 
   azs              = ["${local.region}a", "${local.region}b", "${local.region}c"]
-  public_subnets   = [var.pubsub1cidr, pubsub2cidr, pubsub3cidr]
+  public_subnets   = [var.pubsub1cidr, var.pubsub2cidr, var.pubsub3cidr]
 
   create_database_subnet_group = true
   enable_dns_hostnames         = true
