@@ -46,10 +46,8 @@ resource "aws_lb_listener" "lb_listener-webservice-https" {
   load_balancer_arn = aws_lb.loadbalancer.arn
   port              = "80"
   protocol          = "HTTP"
-  port              = "80"
-  protocol          = "HTTP"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = aws_acm_certificate.ssl_certificate.arn
+#  ssl_policy        = "ELBSecurityPolicy-2016-08"
+# certificate_arn   = aws_acm_certificate.ssl_certificate.arn
 
   default_action {
     type             = "forward"
