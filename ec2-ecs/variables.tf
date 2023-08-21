@@ -22,7 +22,7 @@ variable "r53_zone_id" {
 variable "instance_type" {
   type        = string
   description = "Define the EC2 Instance type for the ecs cluster"
-  default     = "t2.micro"
+  default     = "t3.medium"
 }
 
 ### ECS ###
@@ -67,6 +67,11 @@ default ="172.31.32.0/20"
 variable "image_id" {
 default ="ami-04e35eeae7a7c5883"
 }
+
+variable "image_ecs_id" {
+default ="ami-02a4b44230bc8650a"
+}
+
 
 variable "key_name" {
   type    = string

@@ -8,20 +8,19 @@ resource "aws_autoscaling_group" "tf" {
   min_size            = 1   #set to what you like; must be same as desired capacity
   vpc_zone_identifier = [module.vpc.public_subnets[0], module.vpc.public_subnets[1],module.vpc.public_subnets[2]]   #two subnets
 
+  health_check_type    = "ALB"
+ # Apenas necessario se for ELB, ALB funciona pelo target group
+ # load_balancers = [aws_lb.loadbalancer.id]
+  target_group_arns = [aws_alb_target_group.alb_public_webservice_target_group.arn]
+
   launch_template {
     id      = aws_launch_template.tf_launch_template3.id
     version = "$Latest"
   }
 
- health_check_type    = "ELB"
-  load_balancers = [aws_lb.loadbalancer.id]
-  target_group_arns = [aws_alb_target_group.alb_public_webservice_target_group.arn]
-
-    lifecycle {
+  lifecycle {
     create_before_destroy = true
   }
-
-
 }
 
 ## In the future change the security group of instance to talk
