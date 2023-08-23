@@ -70,6 +70,7 @@ default ="ami-04e35eeae7a7c5883"
 
 variable "image_ecs_id" {
 default ="ami-02a4b44230bc8650a"
+
 }
 
 

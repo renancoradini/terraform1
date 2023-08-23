@@ -1,10 +1,2 @@
 #!/bin/bash
-sudo su
-sudo yum update -y
-sudo systemctl enable --now --no-block ecs.service
-sudo echo ECS_CLUSTER=ecs-denzelrr-cluster >> /etc/ecs/ecs.config
-sudo yum install -y ecs-init
-sudo service docker start
-sudo service ecs start
-sudo service start ecs
-sudo cat /etc/ecs/ecs.config | grep "ECS_CLUSTER"
+echo ECS_CLUSTER=ecs-denzelrr-cluster >> /etc/ecs/ecs.config

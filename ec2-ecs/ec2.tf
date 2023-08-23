@@ -8,7 +8,7 @@ resource "aws_autoscaling_group" "tf" {
   min_size            = 1   #set to what you like; must be same as desired capacity
   vpc_zone_identifier = [module.vpc.public_subnets[0], module.vpc.public_subnets[1],module.vpc.public_subnets[2]]   #two subnets
 
-  health_check_type    = "ALB"
+  health_check_type    = "ELB"
  # Apenas necessario se for ELB, ALB funciona pelo target group
  # load_balancers = [aws_lb.loadbalancer.id]
   target_group_arns = [aws_alb_target_group.alb_public_webservice_target_group.arn]
@@ -28,7 +28,7 @@ resource "aws_autoscaling_group" "tf" {
 
 resource "aws_launch_template" "tf_launch_template3" {
   name_prefix            = "tf-launch_template"
-  image_id               = var.image_id                 #in variable file
+  image_id               = var.image_ecs_id             #in variable file
   instance_type          = var.instance_type            #in variable file
   
   user_data = base64encode(file("user_data.sh"))

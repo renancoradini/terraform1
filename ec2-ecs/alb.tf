@@ -1,5 +1,5 @@
 ##### ALB - Application Load Balancing #####
-##### ALB - Load Balancer #####
+##### ALB - Load Balancer #####sudo yum update -y
 resource "aws_lb" "loadbalancer" {
   internal           = "false" # internal = true else false
   name               = "denzelrr-alb"
