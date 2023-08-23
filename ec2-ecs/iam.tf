@@ -49,5 +49,5 @@ resource "aws_iam_instance_profile" "ecs_agent" {
   role = aws_iam_role.ecs_agent.name
 }
 
-#Lembrar de add esta policies
+#Lembrar de add esta policies ao ecs_agent
 #AmazonSSMFullAccess
