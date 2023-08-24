@@ -14,8 +14,8 @@ git clone https://github.com/renancoradini/terraform1.git
 aws configure --profile renandeploy
 
 acessos provisorios:
-AKIAXKRNQ6PF4J4LNGEN
-ixEwIz25+5bfRcdu4xcwRxa/H8zC7jvTd6q5sr3R
+AKIAWLHLQVRVCCFVTFUK
+l76fMGhl/KZ14fWHO1Kco44m85bM3qobPSNcd2cl
 us-west-2
 
 ## Verificar o data-user da instancia
@@ -23,3 +23,9 @@ us-west-2
 sudo cat /var/lib/cloud/instance/user-data.txt
 
 ami-02a4b44230bc8650a
+
+
+
+### GIT 
+
+teste
