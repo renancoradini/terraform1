@@ -2,7 +2,7 @@ data "template_file" "user_data" {
   template = file("user_data.tpl") #Defines a script that runs when the EC2 instance starts
 }
 
-resource "aws_autoscaling_group" "tf" {
+resource "aws_autoscaling_group" "tf2" {
   desired_capacity    = 1   #set to what you like; must be same number as min
   max_size            = 1   #set to what you like
   min_size            = 1   #set to what you like; must be same as desired capacity
@@ -14,7 +14,7 @@ resource "aws_autoscaling_group" "tf" {
   target_group_arns = [aws_alb_target_group.alb_public_webservice_target_group.arn]
 
   launch_template {
-    id      = aws_launch_template.tf_launch_template3.id
+    id      = aws_launch_template.tf_launch_template.id
     version = "$Latest"
   }
 
@@ -26,10 +26,11 @@ resource "aws_autoscaling_group" "tf" {
 ## In the future change the security group of instance to talk
 #  only with LB
 
-resource "aws_launch_template" "tf_launch_template3" {
+resource "aws_launch_template" "tf_launch_template" {
   name_prefix            = "tf-launch_template"
   image_id               = var.image_ecs_id             #in variable file
   instance_type          = var.instance_type            #in variable file
+  key_name= aws_key_pair.generated_key.key_name
   
   user_data = base64encode(file("user_data.sh"))
   #vpc_security_group_ids    = [aws_security_group.public.id]
