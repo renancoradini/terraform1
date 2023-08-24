@@ -67,3 +67,25 @@ resource "aws_security_group_rule" "public_out_ec2" {
 
   security_group_id = aws_security_group.ec2_ecs_instance.id
 }
+
+
+## Security Group RDS
+resource "aws_security_group" "postgres" {
+  name        = "postgres-security-group"
+  description = "Security group for Postgres database"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    protocol        = "tcp"
+    from_port       = 5432
+    to_port         = 5432
+    security_groups = [aws_security_group.public.id]
+  }
+
+  egress {
+    protocol    = -1
+    from_port   = 0
+    to_port     = 0
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
