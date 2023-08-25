@@ -1,7 +1,3 @@
-data "template_file" "user_data" {
-  template = file("user_data.tpl") #Defines a script that runs when the EC2 instance starts
-}
-
 # 1. EC2 Instance for teste and SSH
 resource "aws_instance" "ec2_ssh" {
 
@@ -24,10 +20,11 @@ resource "aws_instance" "ec2_ssh" {
 ##Auto Scale Group
 
 resource "aws_autoscaling_group" "tf2" {
-  desired_capacity    = 1                                                                                          #set to what you like; must be same number as min
-  max_size            = 1                                                                                          #set to what you like
-  min_size            = 1                                                                                          #set to what you like; must be same as desired capacity
-  vpc_zone_identifier = [module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]] #two subnets
+  desired_capacity    = 1   #set to what you like; must be same number as min
+  max_size            = 1   #set to what you like
+  min_size            = 1   #set to what you like; must be same as desired capacity
+  vpc_zone_identifier = [
+    module.vpc.public_subnets[0], module.vpc.public_subnets[1], module.vpc.public_subnets[2]] #two subnets
 
   health_check_type = "ELB"
   # Apenas necessario se for ELB, ALB funciona pelo target group
@@ -74,3 +71,7 @@ resource "aws_launch_template" "tf_launch_template" {
     }
   }
 }
+
+# data "template_file" "user_data" {
+#   template = file("user_data.tpl") #Defines a script that runs when the EC2 instance starts
+# }
