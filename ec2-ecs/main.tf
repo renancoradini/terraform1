@@ -1,4 +1,10 @@
-# VPC Config
+locals {
+  name     = "denzelrr"
+  rds_name = "denzelrr_rds"
+  region   = var.regionset
+}
+
+# VPC Config - From Terraform Module
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 2"
@@ -13,7 +19,7 @@ module "vpc" {
   enable_dns_hostnames         = true
   enable_nat_gateway           = false
   # single_nat_gateway  = false
-  #  reuse_nat_ips       = true
+  # reuse_nat_ips       = true
   # external_nat_ip_ids = aws_eip.eip_nat.*.id
 
 }
@@ -22,7 +28,6 @@ module "vpc" {
 # resource "aws_eip" "eip_nat" {
 #   vpc = true
 # }
-
 
 # resource "aws_internet_gateway" "IGW" {
 # vpc_id =  module.vpc.id

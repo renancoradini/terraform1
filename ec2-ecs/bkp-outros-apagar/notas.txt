@@ -19,13 +19,11 @@ l76fMGhl/KZ14fWHO1Kco44m85bM3qobPSNcd2cl
 us-west-2
 
 ## Verificar o data-user da instancia
-
 sudo cat /var/lib/cloud/instance/user-data.txt
 
+ami-ec2-ec2 amazon
 ami-02a4b44230bc8650a
 
 
-
-### GIT 
-
+## GIT 
 teste

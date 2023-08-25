@@ -9,11 +9,7 @@ terraform {
   }
 }
 
-locals {
-  name     = "denzelrr"
-  rds_name = "denzelrr_rds"
-  region   = var.regionset
-}
+
 provider "aws" {
   region  = var.regionset
   profile = "renandeploy"
