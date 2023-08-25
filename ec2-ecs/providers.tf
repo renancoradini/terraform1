@@ -15,10 +15,10 @@ locals {
   region   = var.regionset
 }
 provider "aws" {
-  region     = var.regionset
+  region  = var.regionset
   profile = "renandeploy"
-#access_key = var.accessKey
-# secret_key = var.secretKey
+  #access_key = var.accessKey
+  # secret_key = var.secretKey
 }
 
 #   provider "aws" {

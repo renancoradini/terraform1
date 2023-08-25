@@ -35,41 +35,41 @@ variable "container_image" {
 #Temporary credentials / lack of permission on acg Lab 
 
 variable "accessKey" {
-  type = string
+  type        = string
   description = "acess key statica"
-  default   = "AKIA4USHVNXFYMIFZ56A"
+  default     = "AKIA4USHVNXFYMIFZ56A"
 }
 
 variable "secretKey" {
-  type = string
+  type        = string
   description = "Secret key statica"
-  default   = "cBeCnbDsbGfetp+xj58w6FECh9+kEwejCiMs071V"
+  default     = "cBeCnbDsbGfetp+xj58w6FECh9+kEwejCiMs071V"
 }
 
 
 variable "vpc-cidr" {
-type = string
-default = "172.31.0.0/16"
+  type    = string
+  default = "172.31.0.0/16"
 }
 
 variable "pubsub1cidr" {
-default = "172.31.0.0/20"
+  default = "172.31.0.0/20"
 }
 
 variable "pubsub2cidr" {
-default = "172.31.16.0/20"
+  default = "172.31.16.0/20"
 }
 
 variable "pubsub3cidr" {
-default ="172.31.32.0/20"
+  default = "172.31.32.0/20"
 }
 
 variable "image_id" {
-default ="ami-04e35eeae7a7c5883"
+  default = "ami-04e35eeae7a7c5883"
 }
 
 variable "image_ecs_id" {
-default ="ami-02a4b44230bc8650a"
+  default = "ami-02a4b44230bc8650a"
 
 }
 
@@ -79,3 +79,27 @@ variable "key_name" {
   default = "denzelkeyname"
 }
 
+
+
+### RDS
+
+variable "namedb" {
+  description = "Name of DB"
+  type        = string
+  sensitive   = true
+  default     = "DBNAMEPOSTGRES"
+}
+
+
+variable "usernameDB" {
+  description = "The master username for the database."
+  type        = string
+  sensitive   = true
+
+}
+
+variable "passwordDB" {
+  description = "The master password for the database."
+  type        = string
+  sensitive   = true
+}
