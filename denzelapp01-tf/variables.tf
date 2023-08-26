@@ -36,7 +36,7 @@ variable "instance_type" {
 variable "container_image" {
   type        = string
   description = "Define what docker image will be deployed to the ECS task"
-  default     = "412669289836.dkr.ecr.us-west-2.amazonaws.com/ecrrepo2:latest"
+  default     = "734240712282.dkr.ecr.us-west-2.amazonaws.com/ecrrepo2:latest"
 }
 
 # variable "container_image" {
@@ -44,7 +44,6 @@ variable "container_image" {
 #   description = "Define what docker image will be deployed to the ECS task"
 #   default     = "nginx"
 # }
-
 #Temporary credentials / lack of permission on acg Lab 
 
 variable "accessKey" {

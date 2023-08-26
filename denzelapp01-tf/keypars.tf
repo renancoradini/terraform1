@@ -20,8 +20,6 @@ resource "aws_key_pair" "generated_key" {
   }
 }
 
-
-
 #  3. Connection Block-
 #  connection {
 #   type        = "ssh"

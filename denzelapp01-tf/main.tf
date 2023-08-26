@@ -2,7 +2,7 @@ locals {
   name     = "denzelrr"
   rds_name = "denzelrr_rds"
   region   = var.regionset
-  aws_account      = "412669289836"
+
 }
 
 # VPC Config - From Terraform Module
