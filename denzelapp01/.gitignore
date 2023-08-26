@@ -1,4 +1,0 @@
-.terraform.lock.hcl
-.terraform/
-aws_keys_pairs.pem
-terraform.tfstate
