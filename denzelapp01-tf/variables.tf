@@ -9,7 +9,7 @@ variable "regionset" {
 variable "aws_account" {
   type        = string
   description = "AWS account"
-  default     = "734240712282"
+  default     = "725605092983"
 }
 
 
@@ -36,7 +36,7 @@ variable "instance_type" {
 variable "container_image" {
   type        = string
   description = "Define what docker image will be deployed to the ECS task"
-  default     = "734240712282.dkr.ecr.us-west-2.amazonaws.com/ecrrepo2:latest"
+  default     = "725605092983.dkr.ecr.us-west-2.amazonaws.com/ecrrepo2:latest"
 }
 
 # variable "container_image" {

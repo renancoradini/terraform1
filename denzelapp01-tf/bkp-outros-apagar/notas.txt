@@ -27,3 +27,10 @@ ami-02a4b44230bc8650a
 
 ## GIT 
 teste
+
+### docker
+
+sudo su
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 734240712282.dkr.ecr.us-west-2.amazonaws.com
+docker tag renancoradini/denzelapp01:latest 734240712282.dkr.ecr.us-west-2.amazonaws.com/ecrrepo2:latest
+docker push 734240712282.dkr.ecr.us-west-2.amazonaws.com/ecrrepo2:latest
