@@ -5,7 +5,7 @@ resource "aws_instance" "ec2_ssh" {
   instance_type = var.instance_type
 
   subnet_id                   = module.vpc.public_subnets[0]
-  security_groups             = [aws_security_group.public.id]
+  vpc_security_group_ids             = [aws_security_group.public.id]
   associate_public_ip_address = "true"
 
 

@@ -18,6 +18,7 @@ data "template_file" "task_definition_json" {
 
   vars = {
     CONTAINER_IMAGE = var.container_image
+    CONTAINER_PORT = var.container_port
   }
 }
 
@@ -30,7 +31,7 @@ resource "aws_ecs_service" "service-webservice" {
   task_definition = aws_ecs_task_definition.task_definition.arn # Attach the task to service
   load_balancer {
     container_name   = "denzelrr-webservice"
-    container_port   = "8080"
+    container_port   = var.container_port
     target_group_arn = aws_alb_target_group.alb_public_webservice_target_group.arn
   }
 }
