@@ -1,3 +1,6 @@
+
+
+
 resource "aws_ecr_repository" "ecrdenzel" {
   name                 = "ecrrepo2"
   image_tag_mutability = "MUTABLE"

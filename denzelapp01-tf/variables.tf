@@ -39,6 +39,12 @@ variable "container_image" {
   default     = "725605092983.dkr.ecr.us-west-2.amazonaws.com/ecrrepo2:latest"
 }
 
+variable "container_port" {
+  type        = number
+  description = "Define what docker port will be deployed to the ECS task"
+  default     = 80
+}
+
 # variable "container_image" {
 #   type        = string
 #   description = "Define what docker image will be deployed to the ECS task"
